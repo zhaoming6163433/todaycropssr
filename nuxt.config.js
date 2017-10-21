@@ -5,7 +5,7 @@ module.exports = {
   ** Headers of the page 模板插值
   */
   head: {
-    title: 'ssrnuxt',
+    title: '今日口袋',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -20,7 +20,6 @@ module.exports = {
   **配置初始化样式文件可放公共css
   */
   css:['~assets/css/normailze.css','element-ui/lib/theme-default/index.css'],
-
   /*
   ** Customize the progress bar color
   */
@@ -28,7 +27,7 @@ module.exports = {
   plugins: [
       { src: '~plugins/element-ui', ssr: true }
   ],
-  
+
   /*
   ** Build configuration
   */

@@ -14,7 +14,7 @@ let axios_get = function(url,params){
             }
         })
         .catch(function (error) {
-            console.log(error);
+            console.log(error.message);
             reject(error);
         });
     });
