@@ -16,7 +16,7 @@ let urlWebHttp = '';
 if (process.env.NODE_ENV == 'development') {
 	urlWebHttp = 'http://10.6.20.34:8081';
 }else if (process.env.NODE_ENV == 'production') {
-	urlWebHttp = 'http://192.168.1.103:8081';
+	urlWebHttp = 'http://47.52.227.158';
 }
 
 export default{
