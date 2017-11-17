@@ -1,6 +1,7 @@
 <template>
   <div class="ssr_article">
     <progressbar></progressbar>
+    <div class="goback" @click="goback()"><img src="../../static/img/grayback.png"/></div>
     <div id="art_title" class="art_title">{{result.title}}</div>
     <div class="art_domain">{{result.domain}}</div>
     <div class="art_original" @click="checkoriginal(result.url)">查看原始文档</div>
@@ -52,6 +53,10 @@ export default {
     methods: {
         checkoriginal(url){
             window.open(url,'_blank');
+        },
+        //返回
+        goback(){
+            this.$router.go(-1);
         }
     },
 
@@ -76,6 +81,13 @@ export default {
         color: #222;
         padding-left: 20px;
         padding-right: 20px;
+        .goback{
+            width: 30px;
+            border-radius: 100%;
+            position: absolute;
+            top: 8px;
+            left: 10px;
+        }
         .art_title{
             font-weight: 700;
             margin: 1rem 0 0;
