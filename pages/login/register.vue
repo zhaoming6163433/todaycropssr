@@ -1,0 +1,108 @@
+<template>
+  <div class="register">
+    <div class="backimg" @click="goback"></div>
+    <h2>注册你的博客，精彩永不丢失</h2>
+    <div class="username inputdiv"><input id="username" type="text" maxlength="20" placeholder="用户名" v-model="username" autocomplete="new-password" /></div>
+    <div class="password inputdiv"><input id="password" type="password"  maxlength="20" placeholder="密码" v-model="password" autocomplete="new-password" /></div>
+     <div class="password inputdiv"><input id="password" type="password"  maxlength="20" placeholder="确认密码" v-model="repassword" autocomplete="new-password" /></div>
+    <div style="text-align:center;margin-top:10px"><el-button type="primary" class="gotopocket" @click="gotopocket()">注册</el-button></div>
+  </div>
+</template>
+<script>
+import {
+        api_get_article
+    } from '~/plugins/axios'
+
+export default {
+        data() {
+            return {
+                username:'',
+                password:'',
+                repassword:''
+            }
+        },
+        async asyncData(context) {
+
+            let params = context.params || {};
+            console.log(params)
+            let res = '';
+            try {
+                res = await api_get_article(params);
+            } catch (e) {
+
+            }
+            return {
+                result: res.result,
+            }
+        },
+        components: {
+
+        },
+        methods: {
+            goback(){
+                this.$router.go(-1);
+            },
+            gotopocket(){
+
+            },
+            goregister(){
+
+            }
+        },
+
+        mounted() {
+
+        }
+    }
+
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '~assets/scss/normailze.scss';
+  .register{
+      .backimg{
+                display: inline-block;margin: 0;margin-left:5%;
+            }
+      margin-top: 20px;
+      h2{
+        font-size: 20px;
+        text-align: center;
+        width: 100%;
+        margin: 30px 0;
+      }
+      .password{
+        margin-top:20px;
+      }
+      .inputdiv{
+          text-align: center;
+      }
+      .inputdiv>input{
+        outline: none;
+        border: 1px solid $bord_c;
+        width: 70%;
+        height: 35px;
+        border-radius: 30px;
+        font-size: 14px;
+        padding: 0 5%;
+      }
+      .gotopocket{
+        font-size:16px;
+        width: 70%;
+        margin-top: 20px;
+        border-radius: 30px;
+      }
+      .register{
+        text-align: right;
+        margin: 20px 14% 0 0;
+        font-size: 14px;
+        color: $grey_c;
+        a:nth-child(1){
+          margin-right: 10px;
+        }
+        a:nth-child(2){
+          margin-left: 10px;
+        }
+      }
+  }
+</style>

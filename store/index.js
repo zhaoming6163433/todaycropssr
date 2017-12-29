@@ -1,9 +1,12 @@
 export const state = () => ({
-	a : 0
+	userinfo:{
+        username:'',
+        userid:''
+    }
 })
 
 export const mutations = {
-	add (state){
-		state.a++
+	SAVE_USER_INFO(state, obj) {
+		state.userinfo = obj;
 	}
 }
