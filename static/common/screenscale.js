@@ -7,7 +7,7 @@ window.onresize = function(){
 	});
 }
 ;(function(){
-    var fontSize = 20;
+    var fontSize = 10;
     todaycrop = document.getElementById('todaycropssr');
     todaycrop.style.fontSize = fontSize+'px';
 })();
