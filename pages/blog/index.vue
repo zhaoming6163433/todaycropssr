@@ -12,7 +12,6 @@
             <div class="contentin" v-for="(item,index) in artlist" :key="index">
                 <h1 class="titlec1">文章标题</h1>
                 <div>2017年12月27号 星期三</div>
-                <div>习近平总数据发表文章</div>
                 <div style="text-align:right;">
                     <span class="cursorblue" @click="godetail">阅读全文</span>
                 </div>

@@ -2,8 +2,8 @@
     <div class="login">
         <div class="backimg" @click="goback"></div>
         <h2>登录你的博客，精彩永不丢失</h2>
-        <div class="username inputdiv"><input id="username" type="text" maxlength="20" placeholder="用户名" v-model="username" autocomplete="new-password" /></div>
-        <div class="password inputdiv"><input id="password" type="password" maxlength="20" placeholder="密码" v-model="password" autocomplete="new-password" /></div>
+        <div class="username inputdiv"><input  type="text" maxlength="20" placeholder="用户名" v-model="username" autocomplete="new-password" /></div>
+        <div class="password inputdiv"><input  type="password" maxlength="20" placeholder="密码" v-model="password" autocomplete="new-password" /></div>
         <div style="text-align:center;margin-top:10px">
             <el-button type="primary" class="gotopocket" @click="gotopocket" round>登录</el-button>
         </div>
@@ -34,10 +34,7 @@
                     res = await api_post_login(params);
                     this.$router.go(-1);
                 } catch (e) {
-                    this.$message.error(e);
-                }
-                return {
-                    result: res.result,
+                    this.$message.error({message:e,showClose: true});
                 }
             },
             goback() {

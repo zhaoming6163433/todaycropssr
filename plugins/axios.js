@@ -33,3 +33,9 @@ export const api_get_article = (params) => axios_get(ssrConfigs.urlWebHttp + '/a
 /**登录 */
 export const api_post_login = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/login/user_login', params,'post');
 
+/**注册 */
+export const api_post_register = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/login/user_register', params,'post');
+
+/**添加文章 */
+
+export const api_post_addarticle = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/article/add_blog_art', params,'post');
