@@ -92,11 +92,11 @@
                         window.location.href= ssrConfigs.urlWebHttp+"/todaypocket/index.html#/nuxtlogin";
                     }
                 } catch(e) {
-                    this.$router.push({"name":"login"})
+                    window.location.href= ssrConfigs.urlWebHttp+"/todaypocket/index.html#/nuxtlogin";
                 }
             },
             gotologin() {
-                this.$router.push({"name":"login"})
+                window.location.href= ssrConfigs.urlWebHttp+"/todaypocket/index.html#/nuxtlogin";
             }
         },
 
