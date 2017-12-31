@@ -11,7 +11,7 @@
             <h1 class="titlec">我的博客</h1>
             <div class="contentin" v-for="(item,index) in artlist" :key="index">
                 <h1 class="titlec1">{{item.title}}</h1>
-                <div>{{item.content}}}</div>
+                <div>{{item.date|datef}}</div>
                 <div style="text-align:right;">
                     <span class="cursorblue" @click="godetail">阅读全文</span>
                 </div>
@@ -51,6 +51,11 @@
         },
         components: {
 
+        },
+        filters:{
+            datef(val){
+                return new Date(val).Format("yyyy年MM月dd日");
+            }
         },
         methods: {
             async post_getartlist() {
