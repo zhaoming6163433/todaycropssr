@@ -142,7 +142,7 @@ const utils = {
     },
     //是否登录
     islogin(){
-        let userInfo = util.getmyCookie('userInfo');
+        let userInfo = this.getmyCookie('userInfo');
         try {
             let obj = JSON.parse(userInfo);
             if (obj._id) {
