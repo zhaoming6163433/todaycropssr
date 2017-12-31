@@ -96,7 +96,7 @@
                 if(!this.islogin){
                     window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/nuxtlogin";
                 }else{
-
+                     window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/nuxtlogout";
                 }
             },
             isloginfn() {
