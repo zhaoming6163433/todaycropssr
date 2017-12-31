@@ -6,7 +6,7 @@
             </div>
         </section>
         <section class="contentc">
-            <div class="openmenu" @click="openmenu" ></div>
+            <div class="openmenu" @click="openmenu"></div>
             <div class="addart" @click="addart"></div>
             <h1 class="titlec">我的博客</h1>
             <div class="contentin" v-for="(item,index) in artlist" :key="index">
@@ -21,7 +21,7 @@
             <div class="menus" :class="menuanimate">
                 <div class="backimg" @click="backimg"></div>
                 <div class="myhead"><img src="../../static/img/default_head_img.png" /></div>
-                <div class="cursorblue gologin" @click="gotologin">登录</div>
+                <div class="cursorblue gologin" @click="gotologin"><span v-if="!islogin">登录</span><span v-else>退出</span></div>
             </div>
         </section>
     </div>
@@ -37,6 +37,8 @@
     export default {
         data() {
             return {
+                islogin: false,
+                userInfo: '',
                 menuanimate: 'menuanimate',
                 artlist: [1, 2, 3, 4, 5],
                 nodatacobj: {
@@ -58,7 +60,7 @@
                 result: res.result,
             }
         },
-        computed:{
+        computed: {
 
         },
         components: {
@@ -81,27 +83,40 @@
                     }
                 });
             },
-            addart(){
-                let userInfo = util.getmyCookie('userInfo');
-
-                try {
-                    let obj = JSON.parse(userInfo);
-                    if(obj._id){
-                        this.$router.push({"name":"blog-addart"})
-                    }else{
-                        window.location.href= ssrConfigs.urlWebHttp+"/todaypocket/index.html#/nuxtlogin";
-                    }
-                } catch(e) {
-                    window.location.href= ssrConfigs.urlWebHttp+"/todaypocket/index.html#/nuxtlogin";
+            addart() {
+                if (this.islogin) {
+                    this.$router.push({
+                        "name": "blog-addart"
+                    })
+                } else {
+                    window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/nuxtlogin";
                 }
             },
             gotologin() {
-                window.location.href= ssrConfigs.urlWebHttp+"/todaypocket/index.html#/nuxtlogin";
+                if(!this.islogin){
+                    window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/nuxtlogin";
+                }else{
+
+                }
+            },
+            isloginfn() {
+                let userInfo = util.getmyCookie('userInfo');
+                try {
+                    let obj = JSON.parse(userInfo);
+                    if (obj._id) {
+                        this.islogin = true;
+                        this.userInfo = obj;
+                    } else {
+                        this.islogin = false;
+                    }
+                } catch (e) {
+                    this.islogin = false;
+                }
             }
         },
 
         mounted() {
-
+            this.isloginfn();
         }
     }
 </script>
