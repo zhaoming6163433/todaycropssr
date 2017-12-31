@@ -13,7 +13,7 @@
                 <h1 class="titlec1">{{item.title}}</h1>
                 <div>{{item.date|datef}}</div>
                 <div style="text-align:right;">
-                    <span class="cursorblue" @click="godetail">阅读全文</span>
+                    <span class="cursorblue" @click="godetail(item._id)">阅读全文</span>
                 </div>
             </div>
         </section>
@@ -88,11 +88,11 @@
             backimg() {
                 this.menuanimate = 'menuanimate';
             },
-            godetail() {
+            godetail(_id) {
                 this.$router.push({
                     name: 'blog-detail',
                     query: {
-                        id: 123
+                        id: _id
                     }
                 });
             },

@@ -42,3 +42,6 @@ export const api_post_addarticle = (params) => axios_get(ssrConfigs.urlWebHttp +
 
 /**查找文章 */
 export const api_post_getartlist = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/article/getartlist', params,'post');
+
+/**查找文章详情 */
+export const api_get_artdetail = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/article/getartdetail', params,'post');

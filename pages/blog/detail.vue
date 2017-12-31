@@ -19,7 +19,7 @@
 
 <script>
     import {
-        api_get_article
+        api_get_artdetail
     } from '~/plugins/axios'
 
     export default {
@@ -30,11 +30,10 @@
         },
         async asyncData(context) {
 
-            let params = context.params || {};
-            console.log(params)
+            let params = context.query;
             let res = '';
             try {
-                res = await api_get_article(params);
+                res = await api_get_artdetail(params);
             } catch (e) {
 
             }
