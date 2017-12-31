@@ -30,10 +30,10 @@ let axios_get = function(url,params,type){
 
 export const api_get_article = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/article/getArticle', params,'get');
 
-/**登录 */
+/**登录 bifi*/
 export const api_post_login = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/login/user_login', params,'post');
 
-/**注册 */
+/**注册 bifi*/
 export const api_post_register = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/login/user_register', params,'post');
 
 /**添加文章 */

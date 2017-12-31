@@ -89,7 +89,7 @@
                     if(obj._id){
                         this.$router.push({"name":"blog-addart"})
                     }else{
-                        this.$router.push({"name":"login"})
+                        window.location.href= ssrConfigs.urlWebHttp+"/todaypocket/index.html#/nuxtlogin";
                     }
                 } catch(e) {
                     this.$router.push({"name":"login"})
