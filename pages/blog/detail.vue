@@ -10,8 +10,8 @@
             <h1 class="titlec">我的博客</h1>
             <div class="mydetail">
                 <h1 class="titlec1">{{result.title}}</h1>
-                <div class="wenzihui">{{result.date|datef}}</div>
-                <div v-html="reusult.content"></div>
+                <div class="wenzihui">{{result.date|formatDate("yyyy年MM月dd日")}}</div>
+                <div v-html="result.content"></div>
             </div>
         </section>
     </div>
@@ -35,19 +35,13 @@
             try {
                 res = await api_get_artdetail(params);
             } catch (e) {
-
             }
             return {
-                result: res.result,
+                result: res.result||{},
             }
         },
         components: {
 
-        },
-        filters:{
-            datef(val){
-                return new Date(parseInt(val)).Format("yyyy年MM月dd日");
-            }
         },
         methods: {
             backago() {
