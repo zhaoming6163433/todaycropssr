@@ -25,7 +25,8 @@ module.exports = {
   */
   loading: { color: '#50bcb6' },
   plugins: [
-      { src: '~plugins/element-ui', ssr: true }
+      { src: '~plugins/element-ui', ssr: true },
+      { src: '~plugins/formatfilter', ssr: true}
   ],
 
   /*
