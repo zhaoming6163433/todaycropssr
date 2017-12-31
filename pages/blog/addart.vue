@@ -109,7 +109,6 @@
             }
             .backimg {
                 display: inline-block;
-                margin: 0;
             }
             input {
                 font-size: 18px;

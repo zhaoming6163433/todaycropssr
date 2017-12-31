@@ -144,6 +144,9 @@
     .ssr_blog {
         background-color: $bottom_c;
         min-height: 100%;
+        .backimg{
+            margin: 20px;
+        }
         .blogbackout {
             position: absolute;
             width: 100%;

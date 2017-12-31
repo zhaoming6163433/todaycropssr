@@ -64,7 +64,6 @@
     .register {
         .backimg {
             display: inline-block;
-            margin: 0;
             margin-left: 5%;
         }
         margin-top: 20px;
