@@ -125,6 +125,7 @@
 
         mounted() {
             this.isloginfn();
+            this.post_getartlist();
         }
     }
 </script>
