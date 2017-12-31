@@ -9,9 +9,9 @@
             <div class="backimg" @click="backago"></div>
             <h1 class="titlec">我的博客</h1>
             <div class="mydetail">
-                <h1 class="titlec1">文章标题</h1>
-                <div class="wenzihui">2017年12月27号 星期三</div>
-                <div v-html="detail_c"></div>
+                <h1 class="titlec1">{{result.title}}</h1>
+                <div class="wenzihui">{{result.date|datef}}</div>
+                <div v-html="reusult.content"></div>
             </div>
         </section>
     </div>
@@ -25,7 +25,7 @@
     export default {
         data() {
             return {
-                detail_c:'习近平做出了重要讲话'
+
             }
         },
         async asyncData(context) {
@@ -43,6 +43,11 @@
         },
         components: {
 
+        },
+        filters:{
+            datef(val){
+                return new Date(parseInt(val)).Format("yyyy年MM月dd日");
+            }
         },
         methods: {
             backago() {
