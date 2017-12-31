@@ -54,8 +54,7 @@
         },
         filters:{
             datef(val){
-                console.log(val)
-                return new Date(val).Format("yyyy年MM月dd日");
+                return new Date(parseInt(val)).Format("yyyy年MM月dd日");
             }
         },
         methods: {
