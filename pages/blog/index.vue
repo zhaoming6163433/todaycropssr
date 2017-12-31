@@ -10,8 +10,8 @@
             <div class="addart" @click="addart"></div>
             <h1 class="titlec">我的博客</h1>
             <div class="contentin" v-for="(item,index) in artlist" :key="index">
-                <h1 class="titlec1">文章标题</h1>
-                <div>2017年12月27号 星期三</div>
+                <h1 class="titlec1">{{item.title}}</h1>
+                <div>{{item.content}}}</div>
                 <div style="text-align:right;">
                     <span class="cursorblue" @click="godetail">阅读全文</span>
                 </div>
@@ -29,7 +29,7 @@
 
 <script>
     import {
-        api_get_article
+        api_post_getartlist
     } from '~/plugins/axios'
     import ssrConfigs from '~/config/config'
     import util from '~/plugins/util'
@@ -40,24 +40,10 @@
                 islogin: false,
                 userInfo: '',
                 menuanimate: 'menuanimate',
-                artlist: [1, 2, 3, 4, 5],
+                artlist: [],
                 nodatacobj: {
                     nodataimg: '/img/no_img_middle.png' //static用/表示
                 },
-            }
-        },
-        async asyncData(context) {
-
-            let params = context.params || {};
-            console.log(params)
-            let res = '';
-            try {
-                res = await api_get_article(params);
-            } catch (e) {
-
-            }
-            return {
-                result: res.result,
             }
         },
         computed: {
@@ -67,6 +53,28 @@
 
         },
         methods: {
+            async post_getartlist() {
+                let res = '';
+                try {
+                    let obj = util.islogin();
+                    if (obj) {
+                        res = await api_post_getartlist({
+                            _id: obj._id
+                        });
+                        this.artlist = res.result;
+                    } else {
+                        this.$message.error({
+                            message: "请先登录",
+                            showClose: true
+                        });
+                    }
+                } catch (e) {
+
+                }
+                return {
+                    result: res.result,
+                }
+            },
             openmenu() {
                 if (this.menuanimate == 'menuanimate') {
                     this.menuanimate = '';
@@ -93,10 +101,10 @@
                 }
             },
             gotologin() {
-                if(!this.islogin){
+                if (!this.islogin) {
                     window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/nuxtlogin";
-                }else{
-                     window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/nuxtlogout";
+                } else {
+                    window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/nuxtlogout";
                 }
             },
             isloginfn() {
