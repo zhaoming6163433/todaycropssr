@@ -17,6 +17,7 @@
     import {
         api_post_addarticle
     } from '~/plugins/axios'
+    import util from '~/plugins/util'
 
     export default {
         data() {
@@ -60,11 +61,20 @@
                     });
                     return;
                 }
+                let obj = util.islogin();
+                if(obj){
+                    this.addartapi({
+                        _id:obj._id,
+                        title: this.mytitle,
+                        content: htmlstr
+                    });
+                }else{
+                    this.$message.error({
+                        message: "请先登录",
+                        showClose: true
+                    });
+                }
 
-                this.addartapi({
-                    title: this.mytitle,
-                    content: htmlstr
-                });
             },
             goback() {
                 this.$router.go(-1);

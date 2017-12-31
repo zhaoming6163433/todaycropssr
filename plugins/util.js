@@ -139,6 +139,20 @@ const utils = {
     //初始化当前页面data
     initdata(_this){
         Object.assign(_this.$data, _this.$options.data());
+    },
+    //是否登录
+    islogin(){
+        let userInfo = util.getmyCookie('userInfo');
+        try {
+            let obj = JSON.parse(userInfo);
+            if (obj._id) {
+                return obj;
+            } else {
+                return false;
+            }
+        } catch (e) {
+            return false;
+        }
     }
 }
 export default utils
