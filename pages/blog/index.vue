@@ -24,7 +24,7 @@
                 <div class="cursorblue gologin" @click="gotologin"><span v-if="!islogin">登录</span><span v-else>退出</span></div>
                 <div v-if="islogin">
                     <div class="gologin">{{userInfo.username}}</div>
-                    <el-button class="gotomyblog round" @click="gotomyblog" round>进入公开博客</el-button>
+                    <el-button v-show="!queryid" class="gotomyblog round" @click="gotomyblog" round>进入公开博客</el-button>
                     <div class="divline"></div>
                     <div class="gomytoday">
                         <el-button @click="gotobutton" type="primary" v-for="( item, index ) in typelist" :key="index" class="round gomytodayin" plain>{{item.seekname}}</el-button>
@@ -48,6 +48,7 @@
             return {
                 islogin: false,
                 userInfo: '',
+                queryid:'',
                 menuanimate: 'menuanimate',
                 typelist:[],
                 artlist: [],
@@ -163,6 +164,7 @@
             this.isloginfn();
             let params = this.$route.query;
             if(!params._id){
+                this.queryid = params._id;
                 this.post_getartlist();
             }
 
