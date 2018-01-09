@@ -32,7 +32,7 @@
                 let res = '';
                 try {
                     res = await api_post_login(params);
-                    this.$router.go(-1);
+                    //this.$router.go(-1);
                 } catch (e) {
                     this.$message.error({message:e.message,showClose: true});
                 }

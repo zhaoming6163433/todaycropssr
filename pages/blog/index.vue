@@ -11,7 +11,7 @@
             <h1 class="titlec">我的博客</h1>
             <div class="contentin" v-for="(item,index) in artlist" :key="index">
                 <h1 class="titlec1">{{item.title}}</h1>
-                <div>{{item.date|datef}}</div>
+                <div>{{item.date|formatDate("yyyy年MM月dd日")}}</div>
                 <div style="text-align:right;">
                     <span class="cursorblue" @click="godetail(item._id)">阅读全文</span>
                 </div>
@@ -22,6 +22,17 @@
                 <div class="backimg" @click="backimg"></div>
                 <div class="myhead"><img src="../../static/img/default_head_img.png" /></div>
                 <div class="cursorblue gologin" @click="gotologin"><span v-if="!islogin">登录</span><span v-else>退出</span></div>
+                <div v-if="islogin">
+                    <div class="gologin">{{userInfo.username}}</div>
+                    <el-button class="gotomyblog round" @click="gotomyblog" round>进入公开博客</el-button>
+                    <div class="divline"></div>
+                    <div class="gomytoday">
+                        <el-button type="primary" class="round gomytodayin">主要按钮</el-button>
+                        <el-button type="primary" class="round gomytodayin">主要按钮2</el-button>
+                        <el-button type="primary" class="round gomytodayin">主</el-button>
+                        <el-button type="primary" class="round gomytodayin">主要按钮2</el-button>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -29,7 +40,8 @@
 
 <script>
     import {
-        api_post_getartlist
+        api_post_getartlist,
+        api_get_my_seek
     } from '~/plugins/axios'
     import ssrConfigs from '~/config/config'
     import util from '~/plugins/util'
@@ -40,10 +52,23 @@
                 islogin: false,
                 userInfo: '',
                 menuanimate: 'menuanimate',
+                typelist:[],
                 artlist: [],
                 nodatacobj: {
                     nodataimg: '/img/no_img_middle.png' //static用/表示
                 },
+            }
+        },
+        async asyncData (context) {
+            let params = context.query||{};
+            let res = '';
+            try{
+                res = await api_post_getartlist(params);
+            }catch(e){
+
+            }
+            return {
+                artlist: res.result
             }
         },
         computed: {
@@ -53,20 +78,23 @@
 
         },
         filters:{
-            datef(val){
-                return new Date(parseInt(val)).Format("yyyy年MM月dd日");
-            }
+
         },
         methods: {
             async post_getartlist() {
                 let res = '';
+                let res2 = '';
                 try {
                     let obj = util.islogin();
                     if (obj) {
                         res = await api_post_getartlist({
                             _id: obj._id
                         });
+                        res2 = await api_get_my_seek({
+                            _id: obj._id
+                        });
                         this.artlist = res.result;
+                        this.typelist = res2.result;
                     } else {
                         this.$message.error({
                             message: "请先登录",
@@ -79,6 +107,9 @@
                 return {
                     result: res.result,
                 }
+            },
+            gotomyblog(){
+                window.location.href=window.location.href+"?_id="+this.userInfo._id;
             },
             openmenu() {
                 if (this.menuanimate == 'menuanimate') {
@@ -130,7 +161,11 @@
 
         mounted() {
             this.isloginfn();
-            this.post_getartlist();
+            let params = this.$route.query;
+            if(!params._id){
+                this.post_getartlist();
+            }
+
         }
     }
 </script>
@@ -219,6 +254,23 @@
             top: 0;
             transition-duration: .3s;
             transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+            .gomytoday{
+                padding: 0 10px;
+                text-align: center;
+                .gomytodayin{
+                    margin-top:10px;
+                }
+            }
+            .divline{
+                padding: 0 10px;
+                margin: 20px 0;
+                width: 90%;
+                margin-left: 5%;
+            }
+            .gotomyblog{
+                margin-left: 82px;
+                margin-top: 10px;
+            }
             .myhead {
                 width: 120px;
                 margin: 0 auto;
@@ -228,6 +280,9 @@
             .gologin {
                 text-align: center;
                 margin-top: 20px;
+            }
+            .gotomyblog{
+                cursor: pointer;
             }
         }
         .menuanimate {

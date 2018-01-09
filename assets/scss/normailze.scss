@@ -52,10 +52,18 @@ h1{
     color:$blue_c;
     font-weight: bold;
 }
+.round{
+    border-radius: 100px;
+}
 .absoluteall{
     position: absolute;
     width: 100%;
     left: 0;
     right: 0;
     top: 0;
+}
+.divline{
+    background-color:$bord_c;
+    height:1px;
+    width:100%;
 }

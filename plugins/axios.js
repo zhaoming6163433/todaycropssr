@@ -1,6 +1,8 @@
 import axios from 'axios'
 import ssrConfigs from '~/config/config'
 
+axios.defaults.withCredentials = true
+
 let axios_get = function(url,params,type){
     return new Promise((resolve, reject) => {
         type = type.toLowerCase();
@@ -45,3 +47,7 @@ export const api_post_getartlist = (params) => axios_get(ssrConfigs.urlWebHttp +
 
 /**查找文章详情 */
 export const api_get_artdetail = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/article/getartdetail', params,'post');
+
+
+/**获取个人类别 */
+export const api_get_my_seek = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/article/get_my_seek', params,'post');
