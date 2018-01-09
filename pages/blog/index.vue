@@ -164,10 +164,10 @@
             this.isloginfn();
             let params = this.$route.query;
             if(!params._id){
-                this.queryid = params._id;
                 this.post_getartlist();
+            }else{
+                this.queryid = params._id;
             }
-
         }
     }
 </script>
