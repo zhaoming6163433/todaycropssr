@@ -27,10 +27,7 @@
                     <el-button class="gotomyblog round" @click="gotomyblog" round>进入公开博客</el-button>
                     <div class="divline"></div>
                     <div class="gomytoday">
-                        <el-button type="primary" class="round gomytodayin">主要按钮</el-button>
-                        <el-button type="primary" class="round gomytodayin">主要按钮2</el-button>
-                        <el-button type="primary" class="round gomytodayin">主</el-button>
-                        <el-button type="primary" class="round gomytodayin">主要按钮2</el-button>
+                        <el-button type="primary" v-for="( item, index ) in typelist" :key="index" class="round gomytodayin">{{item.seekname}}</el-button>
                     </div>
                 </div>
             </div>
@@ -256,7 +253,7 @@
             transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
             .gomytoday{
                 padding: 0 10px;
-                text-align: center;
+                text-align: left;
                 .gomytodayin{
                     margin-top:10px;
                 }
