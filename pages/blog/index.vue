@@ -27,7 +27,7 @@
                     <el-button class="gotomyblog round" @click="gotomyblog" round>进入公开博客</el-button>
                     <div class="divline"></div>
                     <div class="gomytoday">
-                        <el-button type="primary" v-for="( item, index ) in typelist" :key="index" class="round gomytodayin">{{item.seekname}}</el-button>
+                        <el-button @click="gotobutton" type="primary" v-for="( item, index ) in typelist" :key="index" class="round gomytodayin" plain>{{item.seekname}}</el-button>
                     </div>
                 </div>
             </div>
@@ -123,6 +123,9 @@
                         id: _id
                     }
                 });
+            },
+            gotobutton(){
+                window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/home/myseek";
             },
             addart() {
                 if (this.islogin) {
