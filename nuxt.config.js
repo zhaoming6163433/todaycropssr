@@ -19,14 +19,15 @@ module.exports = {
   /*
   **配置初始化样式文件可放公共css
   */
-  css:['~assets/css/normailze.css','element-ui/lib/theme-default/index.css'],
+  css:['~assets/css/normailze.css','element-ui/lib/theme-default/index.css','mint-ui/lib/style.min.css'],
   /*
   ** Customize the progress bar color
   */
   loading: { color: '#50bcb6' },
   plugins: [
       { src: '~plugins/element-ui', ssr: true },
-      { src: '~plugins/formatfilter', ssr: true}
+      { src: '~plugins/formatfilter', ssr: true},
+      { src: "~plugins/mint-ui", ssr: true }
   ],
 
   /*

@@ -14,7 +14,7 @@
   },
   "config": {
     "nuxt": {
-      "host": "172.31.196.178",
+      "host": "localhost",
       "port": "5555"
     }
   },
@@ -22,6 +22,7 @@
     "axios": "^0.16.2",
     "element-ui": "^1.4.4",
     "jquery": "^3.2.1",
+    "mint-ui": "^2.2.13",
     "nuxt": "^1.0.0-rc11",
     "webpack-zepto": "0.0.1"
   },

@@ -13,6 +13,7 @@
                 <h1 class="titlec1">{{item.title}}</h1>
                 <div>{{item.date|formatDate("yyyy年MM月dd日")}}</div>
                 <div style="text-align:right;">
+                    <img class="deleteart" @click="deleteart(item._id)" src="../../static/img/delete.png"/>
                     <span class="cursorblue" @click="godetail(item._id)">阅读全文</span>
                 </div>
             </div>
@@ -38,7 +39,8 @@
 <script>
     import {
         api_post_getartlist,
-        api_get_my_seek
+        api_get_my_seek,
+        api_post_delartdetail
     } from '~/plugins/axios'
     import ssrConfigs from '~/config/config'
     import util from '~/plugins/util'
@@ -106,6 +108,21 @@
                     result: res.result,
                 }
             },
+            async post_delartdetail(params){
+                try{
+                    let res = await api_post_delartdetail(params);
+                    this.$message({
+                        showClose: true,
+                        message: '删除成功',
+                        type: 'success'
+                    });
+                }catch(e){
+                        this.$message.error({
+                            message: "删除失败",
+                            showClose: true
+                        });
+                }
+            },
             gotomyblog(){
                 window.location.href=window.location.href+"?_id="+this.userInfo._id;
             },
@@ -127,6 +144,21 @@
             },
             gotobutton(){
                 window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/home/myseek";
+            },
+            deleteart(id){
+                let obj = util.islogin();
+                if (!obj) {
+                    this.$messagebox.confirm('确认删除该文章？','').then(() => {
+                        this.post_delartdetail({'id':id});
+                    },() => {
+
+                    });
+                } else {
+                    this.$message.error({
+                        message: "请先登录",
+                        showClose: true
+                    });
+                }
             },
             addart() {
                 if (this.islogin) {
@@ -183,6 +215,12 @@
         min-height: 100%;
         .backimg{
             margin: 20px;
+        }
+        .deleteart{
+            position: absolute;
+            width: 20px;
+            left: 47px;
+            cursor: pointer;
         }
         .blogbackout {
             position: absolute;

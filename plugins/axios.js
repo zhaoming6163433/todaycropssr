@@ -51,3 +51,6 @@ export const api_get_artdetail = (params) => axios_get(ssrConfigs.urlWebHttp + '
 
 /**获取个人类别 */
 export const api_get_my_seek = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/article/get_my_seek', params,'post');
+
+/**删除文章 */
+export const api_post_delartdetail = (params) => axios_get(ssrConfigs.urlWebHttp + '/api/article/delartdetail', params,'post');
