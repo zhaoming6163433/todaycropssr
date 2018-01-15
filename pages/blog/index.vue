@@ -146,6 +146,7 @@
                 window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/home/myseek";
             },
             deleteart(id){
+                alert(id)
                 let obj = util.islogin();
                 console.log(obj)
                 if (obj) {
