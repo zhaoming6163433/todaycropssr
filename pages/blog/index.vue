@@ -116,6 +116,7 @@
                         message: '删除成功',
                         type: 'success'
                     });
+                    this.post_getartlist();
                 }catch(e){
                         this.$message.error({
                             message: "删除失败",
