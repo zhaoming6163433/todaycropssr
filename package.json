@@ -14,7 +14,7 @@
   },
   "config": {
     "nuxt": {
-      "host": "localhost",
+      "host": "172.31.196.178",
       "port": "5555"
     }
   },
