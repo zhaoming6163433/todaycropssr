@@ -146,9 +146,7 @@
                 window.location.href = ssrConfigs.urlWebHttp + "/todaypocket/index.html#/home/myseek";
             },
             deleteart(id){
-                alert(id)
                 let obj = util.islogin();
-                console.log(obj)
                 if (obj) {
                     this.$messagebox.confirm('确认删除该文章？','').then(() => {
                         this.post_delartdetail({'id':id});
