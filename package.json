@@ -23,6 +23,7 @@
     "element-ui": "^1.4.4",
     "jquery": "^3.2.1",
     "mint-ui": "^2.2.13",
+    "node-sass": "^4.9.0",
     "nuxt": "^1.0.0-rc11",
     "webpack-zepto": "0.0.1"
   },
@@ -37,7 +38,6 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "scss-loader": "0.0.1",
     "vue-style-loader": "^3.0.3"
