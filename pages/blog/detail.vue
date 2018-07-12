@@ -115,6 +115,9 @@ export default {
         .wenzihui {
             color: $gray_c;
         }
+        img{
+            width:100%!important;
+        }
     }
 }
 </style>
